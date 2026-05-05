@@ -4,128 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bette King Productions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #e8c96b;
-      --cream: #f5eedc;
-      --dark: #111008;
-      --deep: #1a1608;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--dark);
-      color: var(--cream);
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
+      background-color: #111008;
       min-height: 100vh;
-      overflow-x: hidden;
+      padding: 30px 20px 60px;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.4;
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-    }
-    header::after {
-      content: '✦ ✦ ✦';
-      display: block;
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 10px;
-      margin-top: 18px;
-      opacity: 0.7;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 700;
-      color: var(--gold-light);
-      letter-spacing: 0.05em;
-    }
-    .subtitle {
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.6);
-      margin-top: 10px;
-    }
-
-    main {
-      max-width: 960px;
+    .page {
+      max-width: 720px;
       margin: 0 auto;
-      padding: 50px 20px 80px;
-    }
-
-    .section-label {
-      text-align: center;
-      font-size: 0.65rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-      margin-bottom: 24px;
-    }
-
-    .divider {
       display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 50px 0;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
-    }
-    .divider span { color: var(--gold); font-size: 14px; opacity: 0.7; }
-
-    .flyer-grid {
-      display: grid;
-      gap: 16px;
-    }
-    .flyer-grid.three { grid-template-columns: repeat(3, 1fr); }
-    .flyer-grid.two   { grid-template-columns: repeat(2, 1fr); }
-    .flyer-grid.one   { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-
-    @media (max-width: 600px) {
-      .flyer-grid.three,
-      .flyer-grid.two { grid-template-columns: 1fr; }
+      flex-direction: column;
+      gap: 30px;
     }
 
-    .flyer-card {
-      border: 1px solid rgba(201,168,76,0.2);
-      overflow: hidden;
-      background: var(--deep);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Flyers */
+    .flyer img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .flyer-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(201,168,76,0.5);
-    }
-    .flyer-card img { width: 100%; height: auto; display: block; }
 
-    .video-grid { display: grid; gap: 20px; }
-    .video-grid.one { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
-
+    /* Videos */
     .video-wrap {
-      border: 1px solid rgba(201,168,76,0.2);
       background: #000;
-      overflow: hidden;
+      width: 100%;
     }
     .video-wrap iframe {
       display: block;
@@ -134,192 +40,85 @@
       border: none;
     }
 
-    /* Chris Montez section */
-    .chris-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: start;
-    }
-    @media (max-width: 600px) {
-      .chris-section { grid-template-columns: 1fr; }
-    }
-    .chris-photo {
-      border: 1px solid rgba(201,168,76,0.3);
-      overflow: hidden;
-    }
+    /* Chris Montez */
     .chris-photo img {
       width: 100%;
       height: auto;
       display: block;
-      filter: sepia(20%) contrast(1.05);
-    }
-    .chris-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.4rem;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-    }
-    .chris-content .video-wrap {
-      margin-bottom: 20px;
     }
 
     /* Audio player */
-    .audio-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.6);
-      margin-bottom: 10px;
-    }
     .audio-wrap {
+      background: #1a1608;
+      padding: 20px;
       border: 1px solid rgba(201,168,76,0.2);
-      padding: 16px;
-      background: var(--deep);
     }
     .audio-wrap audio {
       width: 100%;
-      filter: sepia(1) hue-rotate(5deg);
     }
-
-    .credit {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.4);
-      margin-top: 14px;
-      line-height: 1.8;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px 40px;
-      border-top: 1px solid rgba(201,168,76,0.15);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.3);
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.7s ease forwards;
-    }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    .fade-in:nth-child(1) { animation-delay: 0.1s; }
-    .fade-in:nth-child(2) { animation-delay: 0.2s; }
-    .fade-in:nth-child(3) { animation-delay: 0.3s; }
   </style>
 </head>
 <body>
+  <div class="page">
 
-  <header>
-    <h1>Bette King Productions</h1>
-    <p class="subtitle">Live Entertainment &amp; Events</p>
-  </header>
-
-  <main>
-
-    <!-- Flyers 1, 2, 3 -->
-    <div class="section-label">Upcoming Shows</div>
-    <div class="flyer-grid three">
-      <div class="flyer-card fade-in">
-        <img src="https://ui162.github.io/bkp/flyer1.png" alt="Flyer 1" />
-      </div>
-      <div class="flyer-card fade-in">
-        <img src="https://ui162.github.io/bkp/flyer2.png" alt="Flyer 2" />
-      </div>
-      <div class="flyer-card fade-in">
-        <img src="https://ui162.github.io/bkp/flyer3.png" alt="Flyer 3" />
-      </div>
+    <!-- Flyer 1 -->
+    <div class="flyer">
+      <img src="https://ui162.github.io/bkp/flyer1.png" alt="Flyer 1" />
     </div>
 
-    <div class="divider"><span>✦</span></div>
+    <!-- Flyer 2 -->
+    <div class="flyer">
+      <img src="https://ui162.github.io/bkp/flyer2.png" alt="Flyer 2" />
+    </div>
+
+    <!-- Flyer 3 -->
+    <div class="flyer">
+      <img src="https://ui162.github.io/bkp/flyer3.png" alt="Flyer 3" />
+    </div>
 
     <!-- Coasters -->
-    <div class="section-label">The Coasters — Live</div>
-    <div class="video-grid one">
-      <div class="video-wrap fade-in">
-        <iframe src="https://www.youtube.com/embed/x-_553eZGk8"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube-nocookie.com/embed/x-_553eZGk8"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
     </div>
-
-    <div class="divider"><span>✦</span></div>
 
     <!-- Quadrasoul -->
-    <div class="section-label">Quadrasoul — Live</div>
-    <div class="video-grid one">
-      <div class="video-wrap fade-in">
-        <iframe src="https://www.youtube.com/embed/f0P3Kovn8Uk"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube-nocookie.com/embed/f0P3Kovn8Uk"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
     </div>
 
-    <div class="divider"><span>✦</span></div>
-
-    <!-- Flyers 4, 5 -->
-    <div class="section-label">More Events</div>
-    <div class="flyer-grid two">
-      <div class="flyer-card fade-in">
-        <img src="https://ui162.github.io/bkp/flyer4.png" alt="Flyer 4" />
-      </div>
-      <div class="flyer-card fade-in">
-        <img src="https://ui162.github.io/bkp/flyer5.png" alt="Flyer 5" />
-      </div>
+    <!-- Flyer 4 -->
+    <div class="flyer">
+      <img src="https://ui162.github.io/bkp/flyer4.png" alt="Flyer 4" />
     </div>
 
-    <div class="divider"><span>✦</span></div>
-
-    <!-- Brian Hyland -->
-    <div class="section-label">Brian Hyland — Live</div>
-    <div class="video-grid one">
-      <div class="video-wrap fade-in">
-        <iframe src="https://www.youtube.com/embed/oyiMVY33gOM"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-      </div>
+    <!-- Flyer 5 -->
+    <div class="flyer">
+      <img src="https://ui162.github.io/bkp/flyer5.png" alt="Flyer 5" />
     </div>
 
-    <div class="divider"><span>✦</span></div>
-
-    <!-- Chris Montez -->
-    <div class="chris-section">
-      <div class="chris-photo fade-in">
-        <img src="https://ui162.github.io/bkp/chrismontezlivephoto.png" alt="Chris Montez Live" />
-      </div>
-      <div class="chris-content fade-in">
-        <h2>Chris Montez — Live</h2>
-
-        <!-- Sizzle reel -->
-        <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/Vw9qhDdVGwY?start=1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
-        </div>
-
-        <!-- Audio -->
-        <div class="audio-label" style="margin-top:20px;">Live Audio Recording</div>
-        <div class="audio-wrap">
-          <audio controls>
-            <source src="https://ui162.github.io/bkp/chrismontezlive.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-
-        <p class="credit">Produced by<br/>Bette King Productions</p>
-      </div>
+    <!-- Chris Montez Photo + Audio -->
+    <div class="chris-photo">
+      <img src="https://ui162.github.io/bkp/chrismontezlivephoto.png" alt="Chris Montez Live" />
     </div>
 
-  </main>
+    <div class="audio-wrap">
+      <audio controls>
+        <source src="https://ui162.github.io/bkp/chrismontezlive.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
 
-  <footer>
-    &copy; Bette King Productions &nbsp;·&nbsp; All Rights Reserved
-  </footer>
+    <!-- Chris Montez Video -->
+    <div class="video-wrap">
+      <iframe src="https://www.youtube-nocookie.com/embed/Vw9qhDdVGwY?start=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
 
+  </div>
 </body>
 </html>
