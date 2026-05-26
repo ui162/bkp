@@ -1,133 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bette King Productions</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: #111008;
-      min-height: 100vh;
-      padding: 30px 20px 60px;
-    }
-
-    .page {
-      max-width: 720px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    /* Flyers */
-    .flyer img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Videos */
-    .video-wrap {
-      background: #000;
-      width: 100%;
-    }
-    .video-wrap iframe {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: none;
-    }
-
-    /* Chris Montez photo */
-    .chris-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Audio player */
-    .audio-wrap {
-      background: #1a1608;
-      padding: 20px;
-      border: 1px solid rgba(201,168,76,0.2);
-    }
-    .audio-wrap audio {
-      width: 100%;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bette King Productions</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: #111008;
+  min-height: 100vh;
+  padding: 30px 20px 60px;
+}
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.flyer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.yt-link {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  overflow: hidden;
+  text-decoration: none;
+}
+.yt-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s;
+}
+.yt-link:hover img {
+  opacity: 0.75;
+}
+.yt-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 0, 0, 0.92);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  transition: transform 0.2s, background 0.2s;
+}
+.yt-link:hover .yt-play {
+  background: rgb(255, 0, 0);
+  transform: translate(-50%, -50%) scale(1.12);
+}
+.yt-play svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+  margin-left: 6px;
+}
+.yt-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.75));
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+.chris-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.audio-wrap {
+  background: #1a1608;
+  padding: 20px;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.audio-wrap audio {
+  width: 100%;
+}
+</style>
 </head>
 <body>
-  <div class="page">
+<div class="page">
 
-    <!-- Flyer 1 -->
-    <div class="flyer">
-      <img src="https://ui162.github.io/bkp/flyer1.png" alt="Flyer 1" />
-    </div>
-
-    <!-- Flyer 2 -->
-    <div class="flyer">
-      <img src="https://ui162.github.io/bkp/flyer2.png" alt="Flyer 2" />
-    </div>
-
-    <!-- Flyer 3 -->
-    <div class="flyer">
-      <img src="https://ui162.github.io/bkp/flyer3.png" alt="Flyer 3" />
-    </div>
-
-    <!-- Coasters -->
-    <div class="video-wrap">
-      <iframe src="https://player.vimeo.com/video/1189571254"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-
-    <!-- Quadrasoul -->
-    <div class="video-wrap">
-      <iframe src="https://player.vimeo.com/video/1189571321"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-
-    <!-- Flyer 4 -->
-    <div class="flyer">
-      <img src="https://ui162.github.io/bkp/flyer4.png" alt="Flyer 4" />
-    </div>
-
-    <!-- Flyer 5 -->
-    <div class="flyer">
-      <img src="https://ui162.github.io/bkp/flyer5.png" alt="Flyer 5" />
-    </div>
-
-    <!-- Brian Hyland -->
-    <div class="video-wrap">
-      <iframe src="https://player.vimeo.com/video/1189570563"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-
-    <!-- Chris Montez Photo -->
-    <div class="chris-photo">
-      <img src="https://ui162.github.io/bkp/chrismontezlivephoto.png" alt="Chris Montez Live" />
-    </div>
-
-    <!-- Chris Montez Audio -->
-    <div class="audio-wrap">
-      <audio controls>
-        <source src="https://ui162.github.io/bkp/chrismontezlive.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-
-    <!-- Chris Montez Video -->
-    <div class="video-wrap">
-      <iframe src="https://player.vimeo.com/video/1189570649"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-
+  <!-- Flyer 1 -->
+  <div class="flyer">
+    <img src="https://ui162.github.io/bkp/flyer1.png" alt="Flyer 1" />
   </div>
+
+  <!-- Flyer 2 -->
+  <div class="flyer">
+    <img src="https://ui162.github.io/bkp/flyer2.png" alt="Flyer 2" />
+  </div>
+
+  <!-- Flyer 3 -->
+  <div class="flyer">
+    <img src="https://ui162.github.io/bkp/flyer3.png" alt="Flyer 3" />
+  </div>
+
+  <!-- Coasters Sizzle Photo -->
+  <div class="flyer">
+    <img src="https://ui162.github.io/bkp/Coasterssizzle.png" alt="Coasters" />
+  </div>
+
+  <!-- Coasters Video -->
+  <a class="yt-link" href="https://www.youtube.com/watch?v=x-_553eZGk8" target="_blank" rel="noopener">
+    <img src="https://img.youtube.com/vi/x-_553eZGk8/maxresdefault.jpg" alt="Coasters Sizzle Reel" />
+    <div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    <div class="yt-label">▶ Watch on YouTube — Coasters</div>
+  </a>
+
+  <!-- Quadrasoul Video -->
+  <a class="yt-link" href="https://www.youtube.com/watch?v=f0P3Kovn8Uk" target="_blank" rel="noopener">
+    <img src="https://img.youtube.com/vi/f0P3Kovn8Uk/hqdefault.jpg" alt="Quadrasoul" onerror="this.src='https://img.youtube.com/vi/f0P3Kovn8Uk/mqdefault.jpg'" />
+    <div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    <div class="yt-label">▶ Watch on YouTube — Quadrasoul</div>
+  </a>
+
+  <!-- Flyer 4 -->
+  <div class="flyer">
+    <img src="https://ui162.github.io/bkp/flyer4.png" alt="Flyer 4" />
+  </div>
+
+  <!-- Flyer 5 -->
+  <div class="flyer">
+    <img src="https://ui162.github.io/bkp/flyer5.png" alt="Flyer 5" />
+  </div>
+
+  <!-- Brian Hyland Video -->
+  <a class="yt-link" href="https://www.youtube.com/watch?v=oyiMVY33gOM" target="_blank" rel="noopener">
+    <img src="https://img.youtube.com/vi/oyiMVY33gOM/maxresdefault.jpg" alt="Brian Hyland" />
+    <div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    <div class="yt-label">▶ Watch on YouTube — Brian Hyland</div>
+  </a>
+
+  <!-- Chris Montez Photo -->
+  <div class="chris-photo">
+    <img src="https://ui162.github.io/bkp/chrismontezlivephoto.png" alt="Chris Montez Live" />
+  </div>
+
+  <!-- Chris Montez Audio -->
+  <div class="audio-wrap">
+    <audio controls>
+      <source src="https://ui162.github.io/bkp/chrismontezlive.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- Chris Montez Sizzle Video -->
+  <a class="yt-link" href="https://www.youtube.com/watch?v=Vw9qhDdVGwY" target="_blank" rel="noopener">
+    <img src="https://img.youtube.com/vi/Vw9qhDdVGwY/maxresdefault.jpg" alt="Chris Montez Sizzle" />
+    <div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    <div class="yt-label">▶ Watch on YouTube — Chris Montez</div>
+  </a>
+
+</div>
 </body>
 </html>
-
